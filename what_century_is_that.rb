@@ -45,22 +45,21 @@ def century(year_int)
                   6 => 'th', 
                   7 => 'th', 
                   8 => 'th', 
-                  9 => 'th', 
-                  10 => 'th',
-                  11 => 'th',
-                  12 => 'th',
-                  13 => 'th',
+                  9 => 'th' 
                 }
-  p ordinal_hsh  
+
   century_number = year_int / 100
   century_number += 1 unless year_int % 100 == 0
   
   # use the last digit from century_number to look up ordinal suffix
   century_num_string = century_number.to_s
-  last_digit = century_num_string[-1]
-  p last_digit
-  ordinal_suffix = ordinal_hsh[last_digit.to_i]
-  p ordinal_suffix
+  last_digits = century_number % 100
+  if (last_digits < 14 && last_digits > 10)
+    ordinal_suffix = 'th'
+  else
+    last_digit = last_digits % 10
+    ordinal_suffix = ordinal_hsh[last_digit]
+  end
   final_answer = century_num_string + ordinal_suffix
   p final_answer
 end
@@ -75,33 +74,3 @@ p century(10103) == '102nd'
 p century(1052) == '11th'
 p century(1127) == '12th'
 p century(11201) == '113th'
-
-# There's a problem with my algorithm and ordinal hash.
-# Need to differentiate between century numbers such as 101st
-# and 111th, both of which end in 1 but whose ordinal suffixes
-# are chosen by different rules.
-#
-# The rule would seem to be "for numbers between 10 and 19, use 'th', 
-# otherwise use the same rules as for 1 through 9"
-#
-# 1st
-# 2nd
-# 3rd
-# 4th
-# 5th
-# 6th
-# 7th
-# 8th
-# 9th
-# 
-# 10th
-# 11th
-# 12th
-# 13th
-# ...
-# 21st
-# 22nd
-# 23rd
-# 24th
-# ...
-# hash now seems like a dumb approach!
