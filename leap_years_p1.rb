@@ -37,15 +37,12 @@
 # Code
 
 def leap_year?(year)
-  p year
   leap_year = false
-  if year % 4 == 0
-    if year % 100 == 0
-      if year % 400 == 0
-        leap_year = true
-      end
-    end
+  if (year % 4 == 0)
     leap_year = true
+  end
+  if (year % 100) == 0 && !(year % 400 == 0)
+    leap_year = false
   end
   leap_year
 end
@@ -64,6 +61,3 @@ p leap_year?(1700) == false
 p leap_year?(1) == false
 p leap_year?(100) == false
 p leap_year?(400) == true
-
-# Notes
-# Implementation of leap year rules is broken. Need to fix before pushing.
