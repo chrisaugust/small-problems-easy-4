@@ -40,10 +40,11 @@ def multisum(int)
     counter += 1
   end
   merged = (threes + fives).uniq
-  sum = 0
-  for num in merged 
-    sum += num 
-  end
+  #sum = 0
+  #  for num in merged 
+  #    sum += num 
+  #  end
+  sum = merged.reduce(0) { |sum, num| sum + num }
   p sum
 end
 
