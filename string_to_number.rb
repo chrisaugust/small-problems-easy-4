@@ -26,7 +26,7 @@
 
 def string_to_integer(input_str)
   char_array = input_str.split('')
-  p char_array
+  # p char_array
 
   int_array = []
   
@@ -53,7 +53,7 @@ def string_to_integer(input_str)
     when '0'
       int_array << 0
     end
-    p int_array
+    # p int_array
   end
 
   # join the elements of int_array into a single integer
@@ -64,10 +64,11 @@ def string_to_integer(input_str)
   int_array.reverse!
   int_array.each_with_index { |num, idx| converted_int += (10**idx) * num  }
   
-  p converted_int
+  # p converted_int
   return converted_int
 end
 
-# Tests
+puts "Tests for String to Number"
+puts "--------------------------"
 p string_to_integer('4321') == 4321
 p string_to_integer('570') == 570
